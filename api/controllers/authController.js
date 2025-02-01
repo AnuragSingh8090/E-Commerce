@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
   const { username, email, password, mobile } = req.body;
   if (
     !username ||
@@ -26,12 +26,12 @@ export const signup = async (req, res) => {
     await newUser.save();
     res.status(200).json("User Sign Up successfully...!");
   } catch (error) {
-    console.log("error in signup route");
-    console.log(error);
+    console.log("error in sign up controller");
+    next(error);
   }
 };
 
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
   const { email, password, mobile } = req.body;
   try {
     const validUser = await User.findOne({ email });
@@ -46,6 +46,6 @@ export const login = async (req, res) => {
       .json(rest);
   } catch (error) {
     console.log("error in login controller");
-    console.log(error);
+    next(error);
   }
 };
