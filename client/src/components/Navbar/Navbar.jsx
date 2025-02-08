@@ -8,7 +8,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar flex items-center justify-between rounded-[3px] gap-[10px] px-[30px] py-[5px] bg-white border-b border-[#888888]">
+    <nav className="navbar flex items-center justify-between rounded-[3px] gap-[10px] px-[30px] py-[5px] bg-[white] border-b border-[#888888]">
       <div className="bars_container items-center justify-center hidden">
         <i className="fa-solid fa-bars text-[30px] text-[#333232] active:scale-[0.95]  cursor-pointer"></i>
       </div>
