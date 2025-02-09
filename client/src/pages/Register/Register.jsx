@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { sucessToast } from "../../components/Toasters/Toasters";
 const Register = () => {
   const [Register, setRegister] = useState({
     fullname: "",
@@ -11,11 +12,18 @@ const Register = () => {
     gender: "",
   });
 
-  const [error, setError] = useState("Please set some message");
+  const navigate = useNavigate();
+  function redirectLogin() {
+    setTimeout(() => {
+      navigate("/login");
+    }, 1000);
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(Register);
+    sucessToast("Account Created Successfully !!");
+    redirectLogin();
   };
   return (
     <>
@@ -158,7 +166,7 @@ const Register = () => {
 
             {/* Error Message */}
 
-            <p className="text-center text-red-500 text-[15px]">{error}</p>
+            <ToastContainer />
 
             <button className="w-full mt-[15px] bg-blue-600 text-white py-[5px] rounded-[8px] font-[500] text-[18px] hover:bg-blue-700 transition duration-200 cursor-pointer active:scale-[0.98]">
               Register
