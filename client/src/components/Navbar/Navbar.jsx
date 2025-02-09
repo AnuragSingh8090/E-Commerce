@@ -1,25 +1,62 @@
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 const Navbar = () => {
   const [searchText, setSearchText] = useState("");
+  const ulReffrence = useRef();
   const handleSearch = () => {
     console.log(searchText);
   };
 
+  function openNavbar() {
+    ulReffrence.current.style.display = "flex";
+  }
+  function closeNavbar() {
+    ulReffrence.current.style.display = "none";
+  }
+
+  function handleResize() {
+    if (window.innerWidth > 900) {
+      if (ulReffrence.current.style.display == "none") {
+        openNavbar();
+      }
+    } else {
+      closeNavbar();
+    }
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <nav className="navbar flex items-center justify-between rounded-[3px] gap-[10px] px-[30px] py-[5px] bg-[white] border-b border-[#888888]">
-      <div className="bars_container items-center justify-center hidden">
+    <nav className="navbar flex items-center justify-between gap-[10px] px-[30px] py-[5px] bg-[white] shadow-md">
+      <div
+        className="bars_container items-center justify-center hidden"
+        onClick={openNavbar}
+      >
         <i className="fa-solid fa-bars text-[30px] text-[#333232] active:scale-[0.95]  cursor-pointer"></i>
       </div>
 
-      <div className="navLogo w-[60px] flex-shrink-0">
+      <div className="navLogo w-[60px] flex-shrink-0 ">
         <NavLink to="/">
           <img src="/Logo.png" alt="Logo" />
         </NavLink>
       </div>
 
-      <ul className="flex items-center justify-between gap-[22px]">
+      <ul
+        className="flex items-center justify-between gap-[22px]"
+        ref={ulReffrence}
+      >
+        <div
+          className="navBar absolute top-[15px] right-[15px] hidden "
+          onClick={closeNavbar}
+        >
+          <i className="fa-solid fa-xmark text-[black] text-3xl  active:scale-[0.95]"></i>
+        </div>
         <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease ">
           <NavLink to="/">Home</NavLink>
         </li>
