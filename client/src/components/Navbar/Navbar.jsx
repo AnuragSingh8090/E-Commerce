@@ -58,25 +58,52 @@ const Navbar = () => {
           <i className="fa-solid fa-xmark text-[black] text-3xl  active:scale-[0.95]"></i>
         </div>
         <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease ">
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" className="flex items-center justify-center">
+            <i className="fa-solid fa-house ulIcons mr-[10px]"></i>
+            Home
+          </NavLink>
         </li>
         <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
-          <NavLink to="/electronics">Electronics</NavLink>
+          <NavLink
+            to="/electronics"
+            className="flex items-center justify-center"
+          >
+            <i className="fa-solid fa-mobile ulIcons mr-[10px]"></i>
+            Electronics
+          </NavLink>
         </li>
         <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
-          <NavLink to="/beauty">Beauty</NavLink>
+          <NavLink to="/beauty" className="flex items-center justify-center">
+            <i className="fa-solid fa-paintbrush ulIcons mr-[10px]"></i>
+            Beauty
+          </NavLink>
         </li>
         <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
-          <NavLink to="/clothing">Clothing</NavLink>
+          <NavLink to="/clothing" className="flex items-center justify-center">
+            <i className="fa-solid fa-shirt ulIcons mr-[10px]"></i>
+            Clothing
+          </NavLink>
         </li>
         <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
-          <NavLink to="/kids">Kids</NavLink>
+          <NavLink to="/kids" className="flex items-center justify-center">
+            <i className="fa-solid fa-children ulIcons mr-[10px]"></i>
+            Kids
+          </NavLink>
         </li>
         <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
-          <NavLink to="/home_appliances">Home & Appliances</NavLink>
+          <NavLink
+            to="/home_appliances"
+            className="flex items-center justify-center"
+          >
+            <i className="fa-solid fa-kitchen-set ulIcons mr-[10px]"></i>
+            Home & Appliances
+          </NavLink>
         </li>
         <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
-          <NavLink to="/contact">Contact Us</NavLink>
+          <NavLink to="/contact" className="flex items-center justify-center">
+            <i className="fa-solid fa-envelope ulIcons mr-[10px]"></i>
+            Contact Us
+          </NavLink>
         </li>
       </ul>
 

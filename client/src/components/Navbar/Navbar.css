@@ -2,6 +2,9 @@
   color: #015169;
 }
 
+.navbar .ulIcons {
+  display: none;
+}
 @media screen and (max-width: 1200px) {
   .navbar ul {
     gap: 18px;
@@ -76,9 +79,11 @@
     padding: 10px 30px;
     /* padding-left: 93px; */
   }
-
-  .navBar {
+  .navbar .ulIcons {
     display: block;
+  }
+  .navBar {
+    display: flex;
   }
   .navbar ul {
     border-radius: 8px;
