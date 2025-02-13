@@ -1,12 +1,28 @@
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import { sucessToast } from "../Toasters/Toasters";
+import { ToastContainer } from "react-toastify";
 const Navbar = () => {
   const [searchText, setSearchText] = useState("");
+  const [showDrop, setShowDrop] = useState(false);
+  const [loginPopup, setLoginPopup] = useState(false);
   const ulReffrence = useRef();
   const handleSearch = () => {
     console.log(searchText);
   };
+
+  const handleLogout = () => {
+    setLoginPopup(false);
+    setShowDrop(false);
+    sucessToast("Logout Sucessfull ✔");
+  };
+  function showAccountMenu() {
+    setShowDrop(true);
+  }
+  function hideAccountMenu() {
+    setShowDrop(false);
+  }
 
   function openNavbar() {
     ulReffrence.current.style.display = "flex";
@@ -33,7 +49,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar flex items-center justify-between gap-[10px] px-[30px] py-[5px] bg-[white] shadow-md">
+    <nav className="navbar sticky top-0 left-0 flex items-center justify-between gap-[10px] px-[30px] py-[5px] bg-[white] shadow-md">
       <div
         className="bars_container items-center justify-center hidden"
         onClick={openNavbar}
@@ -48,7 +64,7 @@ const Navbar = () => {
       </div>
 
       <ul
-        className="flex items-center justify-between gap-[22px]"
+        className="flex items-center justify-between select-none gap-[22px]"
         ref={ulReffrence}
       >
         <div
@@ -124,6 +140,7 @@ const Navbar = () => {
           onClick={handleSearch}
         ></i>
       </div>
+
       <div className="userSection flex justify-center items-center gap-[30px] ">
         <div className="theme_container active:scale-[0.95] text-[20px] cursor-pointer text-[#333232]">
           <i className="fa-solid fa-moon" title="Dark Mode"></i>
@@ -135,10 +152,85 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <div className="user_container active:scale-[0.95] text-[20px] cursor-pointer text-[#333232]">
-          <NavLink to="/account">
-            <i className="fa-solid fa-user" title="Account"></i>
-          </NavLink>
+        <div className="user_container relative  text-[20px]  text-[#333232]">
+          <ToastContainer />
+
+          <i
+            className="fa-solid fa-user active:scale-[0.95] cursor-pointer"
+            title="Account"
+            onClick={() => (showDrop ? hideAccountMenu() : showAccountMenu())}
+          ></i>
+          {showDrop ? (
+            <div className="dropContainer absolute top-[40px] right-[-5px]   bg-white px-[15px] py-[8px] rounded-[6px] boxShadow-light">
+              <div className="flex w-max gap-[5px] flex-col items-start shrink-0 text-[15px] text-[#333232]">
+                <NavLink to="/account">
+                  <span
+                    className="active:scale-[0.95] select-none cursor-pointer"
+                    onClick={hideAccountMenu}
+                  >
+                    <i className="fa-solid fa-user mr-[6px]"></i> My Account
+                  </span>
+                </NavLink>
+
+                <NavLink to="/#">
+                  <span
+                    className="active:scale-[0.95] select-none cursor-pointer"
+                    onClick={hideAccountMenu}
+                  >
+                    <i className="fa-solid fa-box mr-[6px]"></i> My Orders
+                  </span>
+                </NavLink>
+
+                <NavLink to="/login">
+                  <span
+                    className="active:scale-[0.95] select-none cursor-pointer text-[#006100]"
+                    onClick={hideAccountMenu}
+                  >
+                    <i className="fa-solid fa-right-to-bracket mr-[5px]"></i>{" "}
+                    Login
+                  </span>
+                </NavLink>
+
+                <NavLink to="/#">
+                  <span
+                    className="active:scale-[0.95] select-none cursor-pointer text-[#ce0303]"
+                    onClick={() => setLoginPopup(true)}
+                  >
+                    <i className="fa-solid fa-right-from-bracket mr-[5px]"></i>{" "}
+                    Log Out
+                  </span>
+                </NavLink>
+
+                {loginPopup ? (
+                  <div className="logoutPopup fixed top-[0] left-[0] h-screen w-screen flex items-center justify-center  bg-[#00000093]">
+                    <div className=" bg-white p-[10px] px-[20px] flex flex-col items-center justify-center gap-[20px] rounded-[10px] boxShadow-light">
+                      <h2 className="text-center text-[18px]">
+                        Do you want to log out?
+                      </h2>
+                      <div className="flex items-center justify-center gap-[20px] w-full ">
+                        <button
+                          onClick={handleLogout}
+                          className="bg-red-600 py-[5px] px-[25px] cursor-pointer active:scale-[0.95] border-none rounded-[7px] text-white"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          onClick={() => setLoginPopup(false)}
+                          className="bg-green-600 py-[5px] px-[25px] cursor-pointer active:scale-[0.95] border-none rounded-[7px] text-white"
+                        >
+                          No
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </nav>

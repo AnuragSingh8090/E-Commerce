@@ -7,3 +7,12 @@
   font-family: sans-serif;
   outline: none;
 }
+
+:root {
+  --boxShadow-light: rgba(0, 0, 0, 0.35) 0px 0px 5px;
+}
+
+
+.boxShadow-light {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 5px;
+}

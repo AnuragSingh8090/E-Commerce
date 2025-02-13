@@ -5,6 +5,7 @@
 .navbar .ulIcons {
   display: none;
 }
+
 @media screen and (max-width: 1200px) {
   .navbar ul {
     gap: 18px;
@@ -89,9 +90,10 @@
     border-radius: 8px;
     gap: 20px;
     width: max-content;
-    justify-content: center;
+    justify-content: start;
     align-items: flex-start;
     padding: 10px 25px;
+    padding-top: 60px;
     flex-direction: column;
     position: fixed;
     top: 0;
@@ -123,6 +125,13 @@
 @media screen and (max-width: 650px) {
   .navbar {
     padding: 10px 20px;
+  }
+  nav .dropContainer {
+    font-size: 14px;
+    width: max-content;
+  }
+  .dropContainer ul {
+    gap: 5px;
   }
 }
 @media screen and (max-width: 550px) {
