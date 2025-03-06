@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import { sucessToast, errorToast } from "../../components/Toasters/Toasters";
 const Login = () => {
   const [Login, setLogin] = useState({ email: "", password: "" });
@@ -56,7 +55,6 @@ const Login = () => {
                 className="w-full px-[12px] py-[5px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
-            <ToastContainer />
             <button className="w-full mt-[15px] bg-blue-600 text-white py-[5px] rounded-[8px] font-[500] text-[18px] hover:bg-blue-700 transition duration-200 cursor-pointer active:scale-[0.98]">
               Sign In
             </button>

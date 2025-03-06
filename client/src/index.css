@@ -1,10 +1,8 @@
 @import "tailwindcss";
 
 * {
-  /* padding: 0; */
-  /* margin: 0; */
   box-sizing: border-box;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   outline: none;
 }
 
@@ -12,7 +10,22 @@
   --boxShadow-light: rgba(0, 0, 0, 0.35) 0px 0px 5px;
 }
 
+.centerFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.cardContainer {
+  background-color: white;
+  box-shadow: var(--boxShadow-light);
+  border-radius: 8px;
+  padding: 10px;
+}
 .boxShadow-light {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 5px;
+}
+
+body {
+  background-color: #f6f3f4;
 }

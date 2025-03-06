@@ -2,12 +2,14 @@ import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { sucessToast } from "../Toasters/Toasters";
-import { ToastContainer } from "react-toastify";
+
 const Navbar = () => {
   const [searchText, setSearchText] = useState("");
   const [showDrop, setShowDrop] = useState(false);
   const [loginPopup, setLoginPopup] = useState(false);
-  const ulReffrence = useRef();
+  const [cartItems, setCartItems] = useState(5);
+
+  const ulReffrence = useRef(null);
   const handleSearch = () => {
     console.log(searchText);
   };
@@ -15,7 +17,7 @@ const Navbar = () => {
   const handleLogout = () => {
     setLoginPopup(false);
     setShowDrop(false);
-    sucessToast("Logout Sucessfull ✔");
+    sucessToast("Logout Successfull!!");
   };
   function showAccountMenu() {
     setShowDrop(true);
@@ -49,7 +51,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar sticky top-0 left-0 flex items-center justify-between gap-[10px] px-[30px] py-[5px] bg-[white] shadow-md">
+    <nav className="navbar sticky z-99 top-0 left-0 flex items-center justify-between gap-[10px] px-[30px] py-[5px] bg-[white] shadow-md">
       <div
         className="bars_container items-center justify-center hidden"
         onClick={openNavbar}
@@ -142,19 +144,20 @@ const Navbar = () => {
       </div>
 
       <div className="userSection flex justify-center items-center gap-[30px] ">
-        <div className="theme_container active:scale-[0.95] text-[20px] cursor-pointer text-[#333232]">
+        {/* <div className="theme_container active:scale-[0.95] text-[20px] cursor-pointer text-[#333232]">
           <i className="fa-solid fa-moon" title="Dark Mode"></i>
-        </div>
+        </div> */}
 
-        <div className="cart_container active:scale-[0.95] text-[20px] cursor-pointer text-[#333232]">
+        <div className="cart_container relative active:scale-[0.95] text-[20px] cursor-pointer text-[#333232]">
           <NavLink to="/cart">
             <i className="fa-solid fa-cart-shopping" title="Cart"></i>
+            <span className="absolute bottom-0 right-[-50%] select-none centerFlex bg-[#d63909] text-white text-[12px] p-[5px]  rounded-[50%] h-[20px] w-[20px]">
+              {cartItems}
+            </span>
           </NavLink>
         </div>
 
         <div className="user_container relative  text-[20px]  text-[#333232]">
-          <ToastContainer />
-
           <i
             className="fa-solid fa-user active:scale-[0.95] cursor-pointer"
             title="Account"
@@ -172,7 +175,7 @@ const Navbar = () => {
                   </span>
                 </NavLink>
 
-                <NavLink to="/#">
+                <NavLink to="/orders">
                   <span
                     className="active:scale-[0.95] select-none cursor-pointer"
                     onClick={hideAccountMenu}
@@ -191,18 +194,16 @@ const Navbar = () => {
                   </span>
                 </NavLink>
 
-                <NavLink to="/#">
-                  <span
-                    className="active:scale-[0.95] select-none cursor-pointer text-[#ce0303]"
-                    onClick={() => setLoginPopup(true)}
-                  >
-                    <i className="fa-solid fa-right-from-bracket mr-[5px]"></i>{" "}
-                    Log Out
-                  </span>
-                </NavLink>
+                <span
+                  className="active:scale-[0.95] select-none cursor-pointer text-[#ce0303]"
+                  onClick={() => setLoginPopup(true)}
+                >
+                  <i className="fa-solid fa-right-from-bracket mr-[5px]"></i>{" "}
+                  Log Out
+                </span>
 
                 {loginPopup ? (
-                  <div className="logoutPopup fixed top-[0] left-[0] h-screen w-screen flex items-center justify-center  bg-[#00000093]">
+                  <div className="logoutPopup z-[9999] fixed top-[0] left-[0] h-screen w-screen flex items-center justify-center  bg-[#00000093]">
                     <div className=" bg-white p-[10px] px-[20px] flex flex-col items-center justify-center gap-[20px] rounded-[10px] boxShadow-light">
                       <h2 className="text-center text-[18px]">
                         Do you want to log out?

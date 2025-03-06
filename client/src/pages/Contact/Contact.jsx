@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ToastContainer } from "react-toastify";
 import { sucessToast } from "../../components/Toasters/Toasters";
 import "./Contact.css";
 const Contact = () => {
@@ -116,8 +115,6 @@ const Contact = () => {
                   className="resize-none h-[150px] w-full px-[12px] py-[10px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 ></textarea>
               </div>
-
-              <ToastContainer />
 
               <button className="w-full mt-[10px] bg-blue-600 text-white py-[5px] rounded-[8px] font-[500] text-[18px] hover:bg-blue-700 transition duration-200 cursor-pointer active:scale-[0.98]">
                 Send Message
