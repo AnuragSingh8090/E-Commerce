@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { sucessToast } from "../Toasters/Toasters";
 
@@ -8,7 +8,8 @@ const Navbar = () => {
   const [showDrop, setShowDrop] = useState(false);
   const [loginPopup, setLoginPopup] = useState(false);
   const [cartItems, setCartItems] = useState(5);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const navigate = useNavigate();
   const ulReffrence = useRef(null);
   const handleSearch = () => {
     console.log(searchText);
@@ -18,6 +19,7 @@ const Navbar = () => {
     setLoginPopup(false);
     setShowDrop(false);
     sucessToast("Logout Successfull!!");
+    navigate("/login");
   };
   function showAccountMenu() {
     setShowDrop(true);
@@ -66,7 +68,7 @@ const Navbar = () => {
       </div>
 
       <ul
-        className="flex items-center justify-between select-none gap-[22px]"
+        className="flex text-[15px] shrink-0 font-[500] text-[#333232] items-center justify-between select-none gap-[22px]"
         ref={ulReffrence}
       >
         <div
@@ -75,13 +77,13 @@ const Navbar = () => {
         >
           <i className="fa-solid fa-xmark text-[black] text-3xl  active:scale-[0.95]"></i>
         </div>
-        <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease ">
+        <li className="py-[4px] hover:text-[var(--primary)] hover:border-t-2 hover:border-[var(--primary)]  ">
           <NavLink to="/" className="flex items-center justify-center">
             <i className="fa-solid fa-house ulIcons mr-[10px]"></i>
             Home
           </NavLink>
         </li>
-        <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
+        <li className="py-[4px] hover:text-[var(--primary)] hover:border-t-2 hover:border-[var(--primary)]">
           <NavLink
             to="/electronics"
             className="flex items-center justify-center"
@@ -90,25 +92,25 @@ const Navbar = () => {
             Electronics
           </NavLink>
         </li>
-        <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
+        <li className="py-[4px] hover:text-[var(--primary)] hover:border-t-2 hover:border-[var(--primary)] ">
           <NavLink to="/beauty" className="flex items-center justify-center">
             <i className="fa-solid fa-paintbrush ulIcons mr-[10px]"></i>
             Beauty
           </NavLink>
         </li>
-        <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
+        <li className="py-[4px] hover:text-[var(--primary)] hover:border-t-2 hover:border-[var(--primary)] ">
           <NavLink to="/clothing" className="flex items-center justify-center">
             <i className="fa-solid fa-shirt ulIcons mr-[10px]"></i>
             Clothing
           </NavLink>
         </li>
-        <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
+        <li className="py-[4px] hover:text-[var(--primary)] hover:border-t-2 hover:border-[var(--primary)] ">
           <NavLink to="/kids" className="flex items-center justify-center">
             <i className="fa-solid fa-children ulIcons mr-[10px]"></i>
             Kids
           </NavLink>
         </li>
-        <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
+        <li className="py-[4px] hover:text-[var(--primary)] hover:border-t-2 hover:border-[var(--primary)] ">
           <NavLink
             to="/home_appliances"
             className="flex items-center justify-center"
@@ -117,7 +119,7 @@ const Navbar = () => {
             Home & Appliances
           </NavLink>
         </li>
-        <li className="text-[16px] font-[600] text-[#333232] py-[4px] hover:text-[#015169] hover:border-t-2 hover:border-[#015169] transition-colors duration-500 ease">
+        <li className="py-[4px] hover:text-[var(--primary)] hover:border-t-2 hover:border-[var(--primary)] ">
           <NavLink to="/contact" className="flex items-center justify-center">
             <i className="fa-solid fa-envelope ulIcons mr-[10px]"></i>
             Contact Us
@@ -126,9 +128,13 @@ const Navbar = () => {
       </ul>
 
       <div
-        className="search_container flex items-center justify-center rounded-[8px] px-[8px] py-[3px] border-[2px] border-[#015169] gap-[7px]  w-[270px]"
+        className="search_container text-[13px] flex items-center justify-center rounded-lg px-3 py-2 bg-[var(--primary-light)]  gap-[7px]  w-[30%]"
         title="Search"
       >
+        <i
+          className="fa-solid fa-magnifying-glass active:scale-[0.95] text-[var(--primary)] cursor-pointer"
+          onClick={handleSearch}
+        ></i>
         <input
           type="text"
           placeholder="Search Item"
@@ -137,10 +143,6 @@ const Navbar = () => {
           value={searchText}
           onKeyDown={(e) => (e.key === "Enter" ? handleSearch() : null)}
         />
-        <i
-          className="fa-solid fa-magnifying-glass active:scale-[0.95] text-[#015169] cursor-pointer"
-          onClick={handleSearch}
-        ></i>
       </div>
 
       <div className="userSection flex justify-center items-center gap-[30px] ">
@@ -150,20 +152,33 @@ const Navbar = () => {
 
         <div className="cart_container relative active:scale-[0.95] text-[20px] cursor-pointer text-[#333232]">
           <NavLink to="/cart">
-            <i className="fa-solid fa-cart-shopping" title="Cart"></i>
-            <span className="absolute bottom-0 right-[-50%] select-none centerFlex bg-[#d63909] text-white text-[12px] p-[5px]  rounded-[50%] h-[20px] w-[20px]">
-              {cartItems}
-            </span>
+            <div className="centerFlex gap-2">
+              <div className="relative">
+                <i
+                  className="fa-solid text-[var(--primary)] text-[17px] fa-cart-shopping"
+                  title="Cart"
+                ></i>
+                <span className="absolute top-0 left-[-50%] select-none centerFlex bg-[#d63909] text-white text-[11px] centerFlex  rounded-[50%] h-[18px] w-[18px]">
+                  {cartItems}
+                </span>
+              </div>
+              <span className="text-[15px] ">Cart</span>
+            </div>
           </NavLink>
         </div>
 
-        <div className="user_container relative  text-[20px]  text-[#333232]">
-          <i
-            className="fa-solid fa-user active:scale-[0.95] cursor-pointer"
-            title="Account"
+        <div className="user_container relative  text-[17px]  text-[#333232]">
+          <div
+            className="centerFlex gap-2 cursor-pointer select-none"
             onClick={() => (showDrop ? hideAccountMenu() : showAccountMenu())}
-          ></i>
-          {showDrop ? (
+          >
+            <i
+              className="fa-regular text-[var(--primary)]  fa-user active:scale-[0.95] cursor-pointer"
+              title="Account"
+            ></i>
+            <span className="text-[15px] ">Log in</span>
+          </div>
+          {showDrop && isLoggedIn ? (
             <div className="dropContainer absolute top-[40px] right-[-5px]   bg-white px-[15px] py-[8px] rounded-[6px] boxShadow-light">
               <div className="flex w-max gap-[5px] flex-col items-start shrink-0 text-[15px] text-[#333232]">
                 <NavLink to="/account">
@@ -171,7 +186,7 @@ const Navbar = () => {
                     className="active:scale-[0.95] select-none cursor-pointer"
                     onClick={hideAccountMenu}
                   >
-                    <i className="fa-solid fa-user mr-[6px]"></i> My Account
+                    <i className="fa-regular fa-user mr-[6px]"></i> My Account
                   </span>
                 </NavLink>
 

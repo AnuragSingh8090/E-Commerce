@@ -1,5 +1,5 @@
 .navbar .active {
-  color: #015169;
+  color: var(--primary);
 }
 
 .navbar .ulIcons {

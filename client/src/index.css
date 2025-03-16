@@ -8,6 +8,8 @@
 
 :root {
   --boxShadow-light: rgba(0, 0, 0, 0.35) 0px 0px 5px;
+  --primary: #008ECC;
+  --primary-light: #F3F9FB;
 }
 
 .centerFlex {

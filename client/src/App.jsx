@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
@@ -8,20 +8,25 @@ import Contact from "./pages/Contact/Contact";
 import Error from "./pages/Error/Error";
 import Cart from "./pages/Orders/Cart";
 import { ToastContainer } from "react-toastify";
+
 function App() {
+  const location = useLocation();
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
+
   return (
     <>
-      <Navbar />
+      {!isAuthPage && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Error />} />
       </Routes>
-      <ToastContainer/>
-      <Footer />
+      {!isAuthPage && <Footer />}
+      <ToastContainer />
     </>
   );
 }

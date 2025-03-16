@@ -1,18 +1,24 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { sucessToast, errorToast } from "../../components/Toasters/Toasters";
 const Login = () => {
   const [Login, setLogin] = useState({ email: "", password: "" });
-
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const { email, password } = Login;
     console.log("Email : ", email, "Password : ", password);
-    sucessToast("Login Successful !!");
+    if (email === "admin@gmail.com" && password === "admin") {
+      sucessToast("Login Successful !!");
+      navigate("/");
+    } else {
+      errorToast("Invalid Email or Password !!");
+      setLogin({ email: "", password: "" });
+    }
   };
   return (
     <>
-      <div className="flex items-center justify-center  bg-gray-100 p-[10px] py-[25px]">
+      <div className="flex items-center justify-center  h-screen bg-gray-100 p-[10px] py-[25px]">
         <div className="bg-white p-[20px] rounded-[12px] shadow-md w-[360px]">
           <h2 className="text-[24px] font-[600] text-gray-800 mb-[24px] text-center">
             Login
@@ -55,7 +61,7 @@ const Login = () => {
                 className="w-full px-[12px] py-[5px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
-            <button className="w-full mt-[15px] bg-blue-600 text-white py-[5px] rounded-[8px] font-[500] text-[18px] hover:bg-blue-700 transition duration-200 cursor-pointer active:scale-[0.98]">
+            <button className="w-full mt-[15px] bg-blue-400 text-white py-2 rounded font-[500] text-[15px] hover:bg-[var(--primary)] transition duration-200 cursor-pointer active:scale-[0.98]">
               Sign In
             </button>
           </form>

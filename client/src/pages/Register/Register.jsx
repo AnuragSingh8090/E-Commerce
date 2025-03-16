@@ -26,93 +26,96 @@ const Register = () => {
   };
   return (
     <>
-      <div className="flex items-center justify-center  bg-gray-100 p-[10px] py-[25px]">
-        <div className="bg-white p-[20px] rounded-[12px] shadow-md w-[360px]">
+      <div className="flex items-center justify-center h-screen bg-gray-100 p-[10px] py-[25px]">
+        <div className="bg-white p-[20px] rounded-[12px] shadow-md w-[500px]">
           <h2 className="text-[24px] font-[600] text-gray-800 mb-[24px] text-center">
             Register
           </h2>
           <form onSubmit={handleLogin}>
-            {/* Name */}
-            <div className="mb-[10px]">
-              <label
-                htmlFor="fullName"
-                className="block text-[15px] font-[500] text-gray-700 mb-[5px]"
-              >
-                Full Name
-              </label>
-              <input
-                required
-                onChange={(e) =>
-                  setRegister({ ...Register, fullname: e.target.value })
-                }
-                value={Register.fullname}
-                type="text"
-                id="fullName"
-                placeholder="Enter your fullname"
-                className="w-full px-[12px] py-[5px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
+            <div className=" flex align-center justify-center gap-[20px] w-full ">
+              {/* Name */}
+              <div className="mb-[10px] w-full">
+                <label
+                  htmlFor="fullName"
+                  className="block text-[15px] font-[500] text-gray-700 mb-[5px]"
+                >
+                  Full Name
+                </label>
+                <input
+                  required
+                  onChange={(e) =>
+                    setRegister({ ...Register, fullname: e.target.value })
+                  }
+                  value={Register.fullname}
+                  type="text"
+                  id="fullName"
+                  placeholder="Enter your fullname"
+                  className="w-full px-[12px] py-[5px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+              {/* Mobile */}
+              <div className="mb-[10px] w-full">
+                <label
+                  htmlFor="number"
+                  className="block text-[15px] font-[500] text-gray-700 mb-[5px]"
+                >
+                  Mobile Number
+                </label>
+                <input
+                  required
+                  onChange={(e) =>
+                    setRegister({ ...Register, mobile: e.target.value })
+                  }
+                  value={Register.mobile}
+                  type="number"
+                  id="number"
+                  placeholder="Enter your mobile number"
+                  className="w-full px-[12px] py-[5px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
             </div>
-            {/* Mobile */}
-            <div className="mb-[10px]">
-              <label
-                htmlFor="number"
-                className="block text-[15px] font-[500] text-gray-700 mb-[5px]"
-              >
-                Mobile Number
-              </label>
-              <input
-                required
-                onChange={(e) =>
-                  setRegister({ ...Register, mobile: e.target.value })
-                }
-                value={Register.mobile}
-                type="number"
-                id="number"
-                placeholder="Enter your mobile number"
-                className="w-full px-[12px] py-[5px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
+            <div className=" flex align-center justify-center gap-[20px] w-full ">
+              {/* Email */}
+              <div className="mb-[10px] w-full">
+                <label
+                  htmlFor="email"
+                  className="block text-[15px] font-[500] text-gray-700 mb-[5px]"
+                >
+                  Email
+                </label>
+                <input
+                  required
+                  onChange={(e) =>
+                    setRegister({ ...Register, email: e.target.value })
+                  }
+                  value={Register.email}
+                  type="email"
+                  id="email"
+                  placeholder="Enter your email id"
+                  className="w-full px-[12px] py-[5px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+              {/* Password */}
+              <div className="mb-[10px] w-full">
+                <label
+                  htmlFor="password"
+                  className="block text-[15px] font-[500] text-gray-700 mb-[5px]"
+                >
+                  Password
+                </label>
+                <input
+                  required
+                  onChange={(e) =>
+                    setRegister({ ...Register, password: e.target.value })
+                  }
+                  value={Register.password}
+                  type="password"
+                  id="password"
+                  placeholder="Enter your password"
+                  className="w-full px-[12px] py-[5px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
             </div>
-            {/* Email */}
-            <div className="mb-[10px]">
-              <label
-                htmlFor="email"
-                className="block text-[15px] font-[500] text-gray-700 mb-[5px]"
-              >
-                Email
-              </label>
-              <input
-                required
-                onChange={(e) =>
-                  setRegister({ ...Register, email: e.target.value })
-                }
-                value={Register.email}
-                type="email"
-                id="email"
-                placeholder="Enter your email id"
-                className="w-full px-[12px] py-[5px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            {/* Password */}
-            <div className="mb-[10px]">
-              <label
-                htmlFor="password"
-                className="block text-[15px] font-[500] text-gray-700 mb-[5px]"
-              >
-                Password
-              </label>
-              <input
-                required
-                onChange={(e) =>
-                  setRegister({ ...Register, password: e.target.value })
-                }
-                value={Register.password}
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                className="w-full px-[12px] py-[5px] border border-gray-300 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-
             {/* Age & Gender */}
             <div className=" flex align-center justify-center gap-[20px]">
               {/* Age */}
@@ -165,7 +168,7 @@ const Register = () => {
 
             {/* Error Message */}
 
-            <button className="w-full mt-[15px] bg-blue-600 text-white py-[5px] rounded-[8px] font-[500] text-[18px] hover:bg-blue-700 transition duration-200 cursor-pointer active:scale-[0.98]">
+            <button className="w-full mt-[15px] bg-blue-400 text-white py-2 rounded-lg font-[500] text-[16px] hover:bg-[var(--primary)] transition duration-200 cursor-pointer active:scale-[0.98]">
               Register
             </button>
           </form>
