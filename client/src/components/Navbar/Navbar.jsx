@@ -53,7 +53,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar sticky z-99 top-0 left-0 flex items-center justify-between gap-[10px] px-[30px] py-[5px] bg-[white] shadow-md">
+    <nav className="navbar sticky z-99 top-0 left-0 flex items-center justify-between gap-[10px] px-[30px] py-0 bg-[white] shadow-md">
       <div
         className="bars_container items-center justify-center hidden"
         onClick={openNavbar}
