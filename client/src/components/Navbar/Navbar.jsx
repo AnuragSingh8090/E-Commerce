@@ -10,7 +10,7 @@ const Navbar = () => {
   const [cartItems, setCartItems] = useState(5);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const navigate = useNavigate();
-  const ulReffrence = useRef(null);
+  const navbarReffrence = useRef(null);
   const handleSearch = () => {
     console.log(searchText);
   };
@@ -21,29 +21,30 @@ const Navbar = () => {
     sucessToast("Logout Successfull!!");
     navigate("/login");
   };
-  function showAccountMenu() {
+  const showAccountMenu = () => {
     setShowDrop(true);
-  }
-  function hideAccountMenu() {
+  };
+  const hideAccountMenu = () => {
     setShowDrop(false);
-  }
+  };
 
-  function openNavbar() {
-    ulReffrence.current.style.display = "flex";
-  }
-  function closeNavbar() {
-    ulReffrence.current.style.display = "none";
-  }
+  const openNavbar = () => {
+    navbarReffrence.current.classList.toggle("navbarActive");
+  };
+  const closeNavbar = () => {
+    // navbarReffrence.current.classList.remove("navbarActive");
+    navbarReffrence.current.classList.toggle("navbarInactive");
+  };
 
-  function handleResize() {
+  const handleResize = () => {
     if (window.innerWidth > 900) {
-      if (ulReffrence.current.style.display == "none") {
+      if (navbarReffrence.current.style.display == "none") {
         openNavbar();
       }
     } else {
       closeNavbar();
     }
-  }
+  };
   useEffect(() => {
     window.addEventListener("resize", handleResize);
 
@@ -208,19 +209,41 @@ const Navbar = () => {
         </div>
       </div>
 
-      <ul className="hidden  navItems w-full  py-[8px]  items-center  text-[14px] font-[500] text-[#4f4f4f]  select-none gap-[10px] border-t-[1px] border-[var(--border-light)] md:flex md:flex-wrap md:static">
+      <ul
+        className="fixed  top-0 left-0 h-screen w-[50%] hidden  flex-col items-start  navItems px-[10px]  py-[10px]   text-[14px] font-[500] text-[#4f4f4f] bg-[white] shadow-2xl select-none gap-[10px] border-t-[1px] border-[var(--border-light)] md:flex md:flex-wrap md:static md:w-full md:flex-row md:h-max md:shadow-none md:bg-none "
+        ref={navbarReffrence}
+      >
         <div
-          className="navBar absolute top-[15px] right-[15px] hidden "
+          className="navBar absolute top-[10px] text-[19px] right-[7px] bg-[#f3f3f3]  h-[30px] w-[30px] rounded-[50%] flex items-center justify-center text-[black]   active:scale-[0.90] md:hidden"
           onClick={closeNavbar}
         >
-          <i className="fa-solid fa-xmark text-[black] text-3xl  active:scale-[0.95]"></i>
+          <i className="fa-solid fa-xmark "></i>
+        </div>
+
+        <div className="logoContainer flex items-center justify-center  gap-[10px] mb-[20px] md:hidden">
+          <NavLink to="/" className="centerFlex gap-[5px]">
+            <div className="navLogo w-[36px] flex-shrink-0 ">
+              <img src="/brand-logo.png" alt="Logo" />
+            </div>
+            <span
+              className="text-[18px] "
+              style={{
+                fontFamily: "var(--custom-font)",
+                background: "linear-gradient(to right, #008ecc, #d26c1e)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              BazaarWale
+            </span>
+          </NavLink>
         </div>
 
         <NavLink
           to="/"
-          className="py-[3px] px-[10px] shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)]"
+          className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
-          <li className="centerFlex gap-[7px]">
+          <li className="flex items-center gap-[7px]">
             <i className="fa-solid fa-house ulIcons "></i>
             Home
           </li>
@@ -228,49 +251,49 @@ const Navbar = () => {
 
         <NavLink
           to="/electronics"
-          className="py-[3px] px-[10px] shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)]"
+          className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
-          <li className="centerFlex gap-[7px]">
-            <i class="fa-solid fa-mobile-screen-button ulIcons"></i>
+          <li className="flex items-center gap-[7px]">
+            <i className="fa-solid fa-mobile-screen-button ulIcons"></i>
             Electronics
           </li>
         </NavLink>
 
         <NavLink
           to="/clothing"
-          className="py-[3px] px-[10px] shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)]"
+          className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
-          <li className="centerFlex gap-[7px]">
-            <i class="fa-solid fa-shirt ulIcons"></i>
+          <li className="flex items-center gap-[7px]">
+            <i className="fa-solid fa-shirt ulIcons"></i>
             Clothing
           </li>
         </NavLink>
 
         <NavLink
           to="/kids"
-          className="py-[3px] px-[10px] shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)]"
+          className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
-          <li className="centerFlex gap-[7px]">
-            <i class="fa-solid fa-children ulIcons"></i>
+          <li className="flex items-center gap-[7px]">
+            <i className="fa-solid fa-children ulIcons"></i>
             Kids
           </li>
         </NavLink>
 
         <NavLink
           to="/beauty"
-          className="py-[3px] px-[10px] shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)]"
+          className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
-          <li className="centerFlex gap-[7px]">
-            <i class="fa-solid fa-spa ulIcons"></i>
+          <li className="flex items-center gap-[7px]">
+            <i className="fa-solid fa-spa ulIcons"></i>
             Beauty
           </li>
         </NavLink>
 
         <NavLink
           to="/home_appliences"
-          className="py-[3px] px-[10px] shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)]"
+          className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
-          <li className="centerFlex gap-[7px]">
+          <li className="flex items-center gap-[7px]">
             <i className="fa-solid fa-plug ulIcons "></i>
             Home Appliences
           </li>
@@ -278,9 +301,9 @@ const Navbar = () => {
 
         <NavLink
           to="/kitchen"
-          className="py-[3px] px-[10px] shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)]"
+          className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
-          <li className="centerFlex gap-[7px]">
+          <li className="flex items-center gap-[7px]">
             <i className="fa-solid fa-kitchen-set ulIcons "></i>
             Kitchen
           </li>
@@ -288,36 +311,34 @@ const Navbar = () => {
 
         <NavLink
           to="/personal_care"
-          className="py-[3px] px-[10px] shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)]"
+          className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
-          <li className="centerFlex gap-[7px]">
-            <i class="fa-solid fa-soap ulIcons"></i>
+          <li className="flex items-center gap-[7px]">
+            <i className="fa-solid fa-soap ulIcons"></i>
             Personal Care
           </li>
         </NavLink>
 
         <NavLink
           to="/support"
-          className="py-[3px] px-[10px] shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)]"
+          className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
-          <li className="centerFlex gap-[7px]">
-            <i class="fa-solid fa-headset ulIcons"></i>
+          <li className="flex items-center gap-[7px]">
+            <i className="fa-solid fa-headset ulIcons"></i>
             Support
           </li>
         </NavLink>
 
         <NavLink
           to="/about_us"
-          className="py-[3px] px-[10px] shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)]"
+          className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
-          <li className="centerFlex gap-[7px]">
+          <li className="flex items-center gap-[7px]">
             <i className="fa-solid fa-building ulIcons "></i>
             About Us
           </li>
         </NavLink>
       </ul>
-
-      <div className="hidden"></div>
     </nav>
   );
 };
