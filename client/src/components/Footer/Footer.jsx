@@ -65,40 +65,40 @@ const Footer = () => {
             </h2>
             <ul className=" text-gray-300  flex  flex-col gap-1   text-[14px] font-light mt-2 ">
               <li className="hover:text-white flex items-center gap-2">
-                <i class="fa-solid fa-phone text-12"></i>+91 8090674352
+                <i className="fa-solid fa-phone text-12"></i>+91 8090674352
               </li>
 
               <li className="hover:text-white flex items-center gap-2">
-                <i class="fa-brands fa-whatsapp text-12"></i>+91 8090674352
+                <i className="fa-brands fa-whatsapp text-12"></i>+91 8090674352
               </li>
 
               <li className="hover:text-white flex items-center gap-2">
-                <i class="fa-solid fa-envelope text-12 "></i>
+                <i className="fa-solid fa-envelope text-12 "></i>
                 anuragkumarsingh154@gmail.com
               </li>
             </ul>
             <div className="flex items-center gap-3 mt-4">
               <a href="#">
                 <i
-                  class="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-instagram"
+                  className="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-instagram"
                   title="Instagram"
                 ></i>
               </a>
               <a href="#">
                 <i
-                  class="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-facebook"
+                  className="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-facebook"
                   title="Facebook"
                 ></i>
               </a>
               <a href="#">
                 <i
-                  class="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-linkedin"
+                  className="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-linkedin"
                   title="Linkedin"
                 ></i>
               </a>
               <a href="#">
                 <i
-                  class="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-x-twitter"
+                  className="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-x-twitter"
                   title="Twitter"
                 ></i>
               </a>

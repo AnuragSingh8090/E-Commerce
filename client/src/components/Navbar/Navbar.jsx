@@ -11,6 +11,7 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const navigate = useNavigate();
   const navbarReffrence = useRef(null);
+
   const handleSearch = () => {
     console.log(searchText);
   };
@@ -45,9 +46,16 @@ const Navbar = () => {
   };
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".user_container")) {
+        hideAccountMenu();
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -119,13 +127,11 @@ const Navbar = () => {
             <i className="fa-solid fa-moon" title="Dark Mode"></i>
           </div> */}
 
-            <div className="user_container relative  text-[17px]  text-[#333232]">
-              <div
-                className="centerFlex gap-2 cursor-pointer select-none"
-                onClick={() =>
-                  showDrop ? hideAccountMenu() : showAccountMenu()
-                }
-              >
+            <div
+              className="user_container relative  text-[17px]  text-[#333232]"
+              onClick={() => (showDrop ? hideAccountMenu() : showAccountMenu())}
+            >
+              <div className="centerFlex gap-2 cursor-pointer select-none">
                 <i
                   className="fa-regular text-[var(--primary)]  fa-user active:scale-[0.95] cursor-pointer"
                   title="Account"
