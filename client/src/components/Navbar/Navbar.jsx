@@ -29,20 +29,18 @@ const Navbar = () => {
   };
 
   const openNavbar = () => {
-    navbarReffrence.current.classList.toggle("navbarActive");
+    navbarReffrence.current.classList.remove("navbarInactive");
+    navbarReffrence.current.classList.add("navbarActive");
   };
   const closeNavbar = () => {
-    // navbarReffrence.current.classList.remove("navbarActive");
-    navbarReffrence.current.classList.toggle("navbarInactive");
+    navbarReffrence.current.classList.remove("navbarActive");
+    navbarReffrence.current.classList.add("navbarInactive");
   };
 
   const handleResize = () => {
-    if (window.innerWidth > 900) {
-      if (navbarReffrence.current.style.display == "none") {
-        openNavbar();
-      }
-    } else {
-      closeNavbar();
+    if (window.innerWidth > 767) {
+      navbarReffrence.current.classList.remove("navbarInactive");
+      navbarReffrence.current.classList.remove("navbarActive");
     }
   };
   useEffect(() => {
@@ -210,7 +208,7 @@ const Navbar = () => {
       </div>
 
       <ul
-        className="fixed  top-0 left-0 h-screen w-[50%] hidden  flex-col items-start  navItems px-[10px]  py-[10px]   text-[14px] font-[500] text-[#4f4f4f] bg-[white] shadow-2xl select-none gap-[10px] border-t-[1px] border-[var(--border-light)] md:flex md:flex-wrap md:static md:w-full md:flex-row md:h-max md:shadow-none md:bg-none "
+        className="hidden fixed  top-0 left-0 h-screen w-[50%]  flex-col items-start  navItems px-[10px]  py-[10px]   text-[14px] font-[500] text-[#4f4f4f] bg-[white] shadow-2xl select-none gap-[10px] border-t-[1px] border-[var(--border-light)] md:flex md:flex-wrap md:static md:w-full md:flex-row md:h-max md:shadow-none md:bg-none "
         ref={navbarReffrence}
       >
         <div
