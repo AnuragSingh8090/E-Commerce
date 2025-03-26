@@ -10,25 +10,25 @@ const Footer = () => {
               Quick Links
             </h2>
             <ul className=" text-gray-300 flex flex-col gap-1 text-[14px] font-light mt-2 ">
-              <Link to="/">
+              <Link to="/electronics">
                 <li className="hover:text-white">Electronics</li>
               </Link>
-              <Link to="/">
+              <Link to="/clothing">
                 <li className="hover:text-white">Clothing</li>
               </Link>
-              <Link to="/">
+              <Link to="/home_appliences">
                 <li className="hover:text-white">Home Appliences</li>
               </Link>
-              <Link to="/">
+              <Link to="/kids">
                 <li className="hover:text-white">Kids</li>
               </Link>
-              <Link to="/">
+              <Link to="/beauty">
                 <li className="hover:text-white">Beauty</li>
               </Link>
-              <Link to="/">
+              <Link to="/kitchen">
                 <li className="hover:text-white">Kitchen</li>
               </Link>
-              <Link to="/">
+              <Link to="/personal_care">
                 <li className="hover:text-white">Personal Care</li>
               </Link>
             </ul>
@@ -39,19 +39,19 @@ const Footer = () => {
               Customer Services
             </h2>
             <ul className=" text-gray-300 flex flex-col gap-1 text-[14px] font-light mt-2 ">
-              <Link to="/">
+              <Link to="/about_us">
                 <li className="hover:text-white">About US</li>
               </Link>
-              <Link to="/">
+              <Link to="/terms_conditions">
                 <li className="hover:text-white">Terms & Conditions</li>
               </Link>
-              <Link to="/">
+              <Link to="/faq">
                 <li className="hover:text-white">FAQ</li>
               </Link>
-              <Link to="/">
+              <Link to="/privacy_policy">
                 <li className="hover:text-white">Privace Policy</li>
               </Link>
-              <Link to="/">
+              <Link to="/cancellation_return_policy">
                 <li className="hover:text-white">
                   Cancellation & Return Policy
                 </li>
@@ -78,25 +78,25 @@ const Footer = () => {
               </li>
             </ul>
             <div className="flex items-center gap-3 mt-4">
-              <a href="#">
+              <a href="https://www.instagram.com/" target="_blank">
                 <i
                   className="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-instagram"
                   title="Instagram"
                 ></i>
               </a>
-              <a href="#">
+              <a href="https://www.facebook.com/" target="_blank">
                 <i
                   className="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-facebook"
                   title="Facebook"
                 ></i>
               </a>
-              <a href="#">
+              <a href="https://www.linkedin.com/" target="_blank">
                 <i
                   className="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-linkedin"
                   title="Linkedin"
                 ></i>
               </a>
-              <a href="#">
+              <a href="https://x.com/?lang=en" target="_blank">
                 <i
                   className="text-gray-300 text-[20px] pointer hover:text-white fa-brands fa-x-twitter"
                   title="Twitter"

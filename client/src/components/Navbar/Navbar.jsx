@@ -309,7 +309,7 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
-          to="/support"
+          to="/contact"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto"
         >
           <li className="flex items-center gap-[7px]">
