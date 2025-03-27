@@ -62,7 +62,7 @@ const FAQ = () => {
       id: 8,
       question: "How can I contact customer service?",
       answer:
-        "You can reach our customer service team via email at support@bazaarwale.com, by phone at +91-1234567890 (9 AM to 6 PM, Monday to Saturday), or through the live chat feature on our website. We aim to respond to all inquiries within 24 hours.",
+        "You can reach our customer service team via email at support@bazaarwale.com, by phone at +91-8090674352 (9 AM to 6 PM, Monday to Saturday), or through the live chat feature on our website. We aim to respond to all inquiries within 24 hours.",
       category: "support",
     },
     {
@@ -148,13 +148,12 @@ const FAQ = () => {
   return (
     <div className="max-w-[1000px] mx-auto my-10 px-5 font-['IBM_Plex_Sans'] text-[#333]">
       <ScrollToTop />
-      <div className="text-center mb-10 pb-5 border-b border-[var(--border-light)]">
-        <h1 className="text-[var(--primary)] text-3xl md:text-4xl mb-2">Frequently Asked Questions</h1>
-        <p className="text-gray-600 text-sm">Find answers to common questions about our services</p>
+      <div className="text-center mb-6 pb-3 border-b border-[var(--border-light)]">
+        <h1 className="text-[var(--primary)] text-2xl md:text-3xl mb-1">Frequently Asked Questions</h1>
       </div>
 
-      <div className="mb-8">
-        <div className="relative w-full max-w-[600px] mx-auto mb-10">
+      <div className="mb-6">
+        <div className="relative w-full max-w-[600px] mx-auto mb-6">
           <input
             type="text"
             placeholder="Search for questions..."
@@ -167,11 +166,11 @@ const FAQ = () => {
 
         <div className="bg-white rounded-lg p-6 md:p-8 shadow-md">
           {filteredFaqs.length === 0 ? (
-            <div className="text-center py-10">
-              <i className="fa-solid fa-face-frown text-[var(--primary)] text-4xl mb-4"></i>
+            <div className="text-center py-8">
+              <i className="fa-solid fa-face-frown text-[var(--primary)] text-3xl mb-3"></i>
               <p className="text-sm text-gray-600">No FAQs match your search criteria. Try a different keyword or browse all questions.</p>
               <button
-                className="mt-4 text-[var(--primary)] font-medium text-sm"
+                className="mt-3 text-[var(--primary)] font-medium text-sm"
                 onClick={() => setSearchTerm("")}
               >
                 View all FAQs
@@ -179,22 +178,22 @@ const FAQ = () => {
             </div>
           ) : (
             filteredFaqs.map((faq) => (
-              <div key={faq.id} className="mb-5 border-b border-gray-100 pb-5 last:border-0 last:pb-0 last:mb-0">
+              <div key={faq.id} className="mb-4 border-b border-gray-100 pb-4 last:border-0 last:pb-0 last:mb-0">
                 <div
                   className="flex justify-between items-center cursor-pointer"
                   onClick={() => toggleFaq(faq.id)}
                 >
-                  <h3 className="text-base font-medium flex-grow">
+                  <h3 className="text-sm font-medium flex-grow">
                     {faq.question}
                   </h3>
-                  <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+                  <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                     <i className={`fa-solid ${expandedFaq === faq.id ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
                   </span>
                 </div>
                 {expandedFaq === faq.id && (
-                  <div className="mt-3 pl-0 text-sm leading-relaxed text-gray-600 animate-fadeIn">
+                  <div className="mt-2 pl-0 text-xs leading-relaxed text-gray-600 animate-fadeIn">
                     {faq.answer}
-                    <div className="mt-2 text-xs text-[var(--primary-dark)]">
+                    <div className="mt-1 text-xs text-[var(--primary-dark)]">
                       Category: <span className="font-medium capitalize">{faq.category}</span>
                     </div>
                   </div>
@@ -202,29 +201,6 @@ const FAQ = () => {
               </div>
             ))
           )}
-        </div>
-      </div>
-
-      <div className="bg-[var(--primary-light)] p-6 rounded-lg text-center">
-        <h2 className="text-base font-medium text-[var(--primary)] mb-2">
-          Can't find what you're looking for?
-        </h2>
-        <p className="mb-4 text-sm">
-          Our customer support team is here to answer any questions you may have.
-        </p>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <a
-            href="mailto:support@bazaarwale.com"
-            className="flex items-center text-gray-700 hover:text-[var(--primary)] transition-all text-sm"
-          >
-            <i className="fa-solid fa-envelope mr-2 text-[var(--primary)]"></i> support@bazaarwale.com
-          </a>
-          <a
-            href="tel:+911234567890"
-            className="flex items-center text-gray-700 hover:text-[var(--primary)] transition-all text-sm"
-          >
-            <i className="fa-solid fa-phone mr-2 text-[var(--primary)]"></i> +91-1234567890
-          </a>
         </div>
       </div>
     </div>

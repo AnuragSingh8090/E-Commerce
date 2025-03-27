@@ -14,7 +14,6 @@ const Terms_Conditions = () => {
     8: true,
     9: true,
     10: true,
-    11: true,
   });
   const [activeSection, setActiveSection] = useState(1);
   const [showTOC, setShowTOC] = useState(false);
@@ -32,7 +31,7 @@ const Terms_Conditions = () => {
       const scrollPosition = window.scrollY + 100;
 
       // Find the current section in view
-      for (let i = 11; i >= 1; i--) {
+      for (let i = 10; i >= 1; i--) {
         const section = document.getElementById(`section-${i}`);
         if (section && section.offsetTop <= scrollPosition) {
           setActiveSection(i);
@@ -81,21 +80,19 @@ const Terms_Conditions = () => {
     { id: 8, title: "User Conduct" },
     { id: 9, title: "Limitation of Liability" },
     { id: 10, title: "Changes to Terms" },
-    { id: 11, title: "Contact Information" },
   ];
 
   return (
     <div className="max-w-[1000px] mx-auto my-10 px-5 font-['IBM_Plex_Sans'] text-[#333] relative">
       <ScrollToTop />
-      <div className="text-center mb-3 pb-5 ">
-        <h1 className="text-[var(--primary)] text-3xl md:text-4xl mb-2">
+      <div className="text-center mb-6 pb-3 border-b border-[var(--border-light)]">
+        <h1 className="text-[var(--primary)] text-2xl md:text-3xl mb-1">
           Terms and Conditions
         </h1>
-        <p className="text-gray-600 text-sm">Last Updated: July 1, 2023</p>
       </div>
 
       {/* Table of Contents - Mobile Dropdown */}
-      <div className="md:hidden mb-6">
+      <div className="md:hidden mb-4">
         <button
           onClick={() => setShowTOC(!showTOC)}
           className="w-full flex items-center justify-between bg-[var(--primary-light)] text-[var(--primary)] font-medium py-3 px-4 rounded-lg"
@@ -133,9 +130,9 @@ const Terms_Conditions = () => {
       {/* Desktop - Layout with TOC sidebar and content */}
       <div className="flex flex-col md:flex-row gap-8">
         {/* TOC Sidebar - Desktop */}
-        <div className="hidden md:block md:w-1/4 h-fit sticky top-[130px]">
+        <div className="hidden md:block md:w-1/4 h-fit sticky top-24">
           <div className="bg-white rounded-lg p-4 shadow-md border border-[var(--border-light)]">
-            <h3 className="text-sm font-medium text-[var(--primary)] mb-4 pb-2 border-b border-[var(--primary-light)]">
+            <h3 className="text-xs font-medium text-[var(--primary)] mb-3 pb-1 border-b border-[var(--primary-light)]">
               Contents
             </h3>
             <ul className="space-y-2">
@@ -159,15 +156,15 @@ const Terms_Conditions = () => {
 
         {/* Main Content */}
         <div className="md:w-3/4 bg-white rounded-lg p-6 md:p-8 shadow-md">
-          <section id="section-1" className="mb-8 scroll-mt-24">
+          <section id="section-1" className="mb-6 scroll-mt-24">
             <div
               className="flex justify-between items-center cursor-pointer"
               onClick={() => toggleSection(1)}
             >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+              <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
                 1. Introduction
               </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                 <i
                   className={`fa-solid ${
                     expandedSections[1] ? "fa-chevron-up" : "fa-chevron-down"
@@ -187,15 +184,15 @@ const Terms_Conditions = () => {
             )}
           </section>
 
-          <section id="section-2" className="mb-8 scroll-mt-24">
+          <section id="section-2" className="mb-6 scroll-mt-24">
             <div
               className="flex justify-between items-center cursor-pointer"
               onClick={() => toggleSection(2)}
             >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+              <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
                 2. Definitions
               </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                 <i
                   className={`fa-solid ${
                     expandedSections[2] ? "fa-chevron-up" : "fa-chevron-down"
@@ -226,15 +223,15 @@ const Terms_Conditions = () => {
             )}
           </section>
 
-          <section id="section-3" className="mb-8 scroll-mt-24">
+          <section id="section-3" className="mb-6 scroll-mt-24">
             <div
               className="flex justify-between items-center cursor-pointer"
               onClick={() => toggleSection(3)}
             >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+              <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
                 3. Account Registration
               </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                 <i
                   className={`fa-solid ${
                     expandedSections[3] ? "fa-chevron-up" : "fa-chevron-down"
@@ -262,15 +259,15 @@ const Terms_Conditions = () => {
             )}
           </section>
 
-          <section id="section-4" className="mb-8 scroll-mt-24">
+          <section id="section-4" className="mb-6 scroll-mt-24">
             <div
               className="flex justify-between items-center cursor-pointer"
               onClick={() => toggleSection(4)}
             >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+              <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
                 4. Products and Services
               </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                 <i
                   className={`fa-solid ${
                     expandedSections[4] ? "fa-chevron-up" : "fa-chevron-down"
@@ -299,15 +296,15 @@ const Terms_Conditions = () => {
             )}
           </section>
 
-          <section id="section-5" className="mb-8 scroll-mt-24">
+          <section id="section-5" className="mb-6 scroll-mt-24">
             <div
               className="flex justify-between items-center cursor-pointer"
               onClick={() => toggleSection(5)}
             >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+              <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
                 5. Pricing and Payment
               </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                 <i
                   className={`fa-solid ${
                     expandedSections[5] ? "fa-chevron-up" : "fa-chevron-down"
@@ -334,15 +331,15 @@ const Terms_Conditions = () => {
             )}
           </section>
 
-          <section id="section-6" className="mb-8 scroll-mt-24">
+          <section id="section-6" className="mb-6 scroll-mt-24">
             <div
               className="flex justify-between items-center cursor-pointer"
               onClick={() => toggleSection(6)}
             >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+              <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
                 6. Shipping and Delivery
               </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                 <i
                   className={`fa-solid ${
                     expandedSections[6] ? "fa-chevron-up" : "fa-chevron-down"
@@ -365,15 +362,15 @@ const Terms_Conditions = () => {
             )}
           </section>
 
-          <section id="section-7" className="mb-8 scroll-mt-24">
+          <section id="section-7" className="mb-6 scroll-mt-24">
             <div
               className="flex justify-between items-center cursor-pointer"
               onClick={() => toggleSection(7)}
             >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+              <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
                 7. Intellectual Property
               </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                 <i
                   className={`fa-solid ${
                     expandedSections[7] ? "fa-chevron-up" : "fa-chevron-down"
@@ -398,15 +395,15 @@ const Terms_Conditions = () => {
             )}
           </section>
 
-          <section id="section-8" className="mb-8 scroll-mt-24">
+          <section id="section-8" className="mb-6 scroll-mt-24">
             <div
               className="flex justify-between items-center cursor-pointer"
               onClick={() => toggleSection(8)}
             >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+              <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
                 8. User Conduct
               </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                 <i
                   className={`fa-solid ${
                     expandedSections[8] ? "fa-chevron-up" : "fa-chevron-down"
@@ -430,15 +427,15 @@ const Terms_Conditions = () => {
             )}
           </section>
 
-          <section id="section-9" className="mb-8 scroll-mt-24">
+          <section id="section-9" className="mb-6 scroll-mt-24">
             <div
               className="flex justify-between items-center cursor-pointer"
               onClick={() => toggleSection(9)}
             >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+              <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
                 9. Limitation of Liability
               </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                 <i
                   className={`fa-solid ${
                     expandedSections[9] ? "fa-chevron-up" : "fa-chevron-down"
@@ -459,15 +456,15 @@ const Terms_Conditions = () => {
             )}
           </section>
 
-          <section id="section-10" className="mb-8 scroll-mt-24">
+          <section id="section-10" className="mb-6 scroll-mt-24">
             <div
               className="flex justify-between items-center cursor-pointer"
               onClick={() => toggleSection(10)}
             >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+              <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
                 10. Changes to Terms
               </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
                 <i
                   className={`fa-solid ${
                     expandedSections[10] ? "fa-chevron-up" : "fa-chevron-down"
@@ -483,49 +480,6 @@ const Terms_Conditions = () => {
                   Terms on our Website. Your continued use of our Website after
                   any changes indicates your acceptance of the new Terms.
                 </p>
-              </div>
-            )}
-          </section>
-
-          <section id="section-11" className="mb-8 scroll-mt-24">
-            <div
-              className="flex justify-between items-center cursor-pointer"
-              onClick={() => toggleSection(11)}
-            >
-              <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
-                11. Contact Information
-              </h2>
-              <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
-                <i
-                  className={`fa-solid ${
-                    expandedSections[11] ? "fa-chevron-up" : "fa-chevron-down"
-                  }`}
-                ></i>
-              </span>
-            </div>
-            {expandedSections[11] && (
-              <div className="animate-fadeIn">
-                <p className="mb-4 leading-relaxed text-sm">
-                  If you have any questions or concerns about these Terms,
-                  please contact us at:
-                </p>
-                <div className="bg-[var(--primary-light)] p-5 rounded-lg">
-                  <p className="flex items-center mb-2 text-sm">
-                    <i className="fa-solid fa-envelope text-[var(--primary)] mr-3"></i>
-                    <span>Email: support@bazaarwale.com</span>
-                  </p>
-                  <p className="flex items-center mb-2 text-sm">
-                    <i className="fa-solid fa-phone text-[var(--primary)] mr-3"></i>
-                    <span>Phone: +91-8090674352</span>
-                  </p>
-                  <p className="flex items-center text-sm">
-                    <i className="fa-solid fa-location-dot text-[var(--primary)] mr-3"></i>
-                    <span>
-                      Address: BazaarWale Headquarters, 123 E-Commerce Street,
-                      Digital City, India - 110001
-                    </span>
-                  </p>
-                </div>
               </div>
             )}
           </section>

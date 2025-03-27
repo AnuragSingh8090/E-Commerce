@@ -5,7 +5,7 @@ import "./Privacy_Policy.css";
 const Privacy_Policy = () => {
   const [expandedSections, setExpandedSections] = useState({
     1: true, 2: true, 3: true, 4: true, 5: true,
-    6: true, 7: true, 8: true, 9: true, 10: true, 11: true
+    6: true, 7: true, 8: true, 9: true, 10: true
   });
 
   const toggleSection = (sectionNumber) => {
@@ -18,21 +18,20 @@ const Privacy_Policy = () => {
   return (
     <div className="max-w-[1000px] mx-auto my-10 px-5 font-['IBM_Plex_Sans'] text-[#333]">
       <ScrollToTop />
-      <div className="text-center mb-10 pb-5 border-b border-[var(--border-light)]">
-        <h1 className="text-[var(--primary)] text-3xl md:text-4xl mb-2">Privacy Policy</h1>
-        <p className="text-gray-600 text-sm">Last Updated: July 1, 2023</p>
+      <div className="text-center mb-6 pb-3 border-b border-[var(--border-light)]">
+        <h1 className="text-[var(--primary)] text-2xl md:text-3xl mb-1">Privacy Policy</h1>
       </div>
 
       <div className="bg-white rounded-lg p-6 md:p-8 shadow-md">
-        <section className="mb-8">
+        <section className="mb-6">
           <div 
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleSection(1)}
           >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+            <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
               1. Introduction
             </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
               <i className={`fa-solid ${expandedSections[1] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </span>
           </div>
@@ -53,15 +52,15 @@ const Privacy_Policy = () => {
           )}
         </section>
 
-        <section className="mb-8">
+        <section className="mb-6">
           <div 
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleSection(2)}
           >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+            <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
               2. Information We Collect
             </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
               <i className={`fa-solid ${expandedSections[2] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </span>
           </div>
@@ -100,15 +99,15 @@ const Privacy_Policy = () => {
           )}
         </section>
 
-        <section className="mb-8">
+        <section className="mb-6">
           <div 
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleSection(3)}
           >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+            <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
               3. How We Collect Information
             </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
               <i className={`fa-solid ${expandedSections[3] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </span>
           </div>
@@ -138,15 +137,15 @@ const Privacy_Policy = () => {
           )}
         </section>
 
-        <section className="mb-8">
+        <section className="mb-6">
           <div 
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleSection(4)}
           >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+            <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
               4. How We Use Your Information
             </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
               <i className={`fa-solid ${expandedSections[4] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </span>
           </div>
@@ -170,15 +169,15 @@ const Privacy_Policy = () => {
           )}
         </section>
 
-        <section className="mb-8">
+        <section className="mb-6">
           <div 
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleSection(5)}
           >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+            <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
               5. Disclosure of Your Information
             </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
               <i className={`fa-solid ${expandedSections[5] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </span>
           </div>
@@ -213,15 +212,15 @@ const Privacy_Policy = () => {
           )}
         </section>
 
-        <section className="mb-8">
+        <section className="mb-6">
           <div 
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleSection(6)}
           >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+            <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
               6. Data Security
             </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
               <i className={`fa-solid ${expandedSections[6] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </span>
           </div>
@@ -243,15 +242,15 @@ const Privacy_Policy = () => {
           )}
         </section>
 
-        <section className="mb-8">
+        <section className="mb-6">
           <div 
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleSection(7)}
           >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+            <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
               7. Your Rights
             </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
               <i className={`fa-solid ${expandedSections[7] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </span>
           </div>
@@ -275,15 +274,15 @@ const Privacy_Policy = () => {
           )}
         </section>
 
-        <section className="mb-8">
+        <section className="mb-6">
           <div 
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleSection(8)}
           >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+            <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
               8. Cookies Policy
             </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
               <i className={`fa-solid ${expandedSections[8] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </span>
           </div>
@@ -326,15 +325,15 @@ const Privacy_Policy = () => {
           )}
         </section>
 
-        <section className="mb-8">
+        <section className="mb-6">
           <div 
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleSection(9)}
           >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+            <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
               9. Children's Privacy
             </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
               <i className={`fa-solid ${expandedSections[9] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </span>
           </div>
@@ -351,15 +350,15 @@ const Privacy_Policy = () => {
           )}
         </section>
 
-        <section className="mb-8">
+        <section className="mb-6">
           <div 
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleSection(10)}
           >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
+            <h2 className="text-[var(--primary)] text-sm font-medium mb-3 pb-1 border-b border-[var(--primary-light)] flex-grow">
               10. Changes to Our Privacy Policy
             </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
+            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6 translate-y-[-10px]">
               <i className={`fa-solid ${expandedSections[10] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </span>
           </div>
@@ -371,42 +370,6 @@ const Privacy_Policy = () => {
                 encourage you to review this Privacy Policy periodically to stay
                 informed about how we are protecting your information.
               </p>
-            </div>
-          )}
-        </section>
-
-        <section className="mb-8">
-          <div 
-            className="flex justify-between items-center cursor-pointer"
-            onClick={() => toggleSection(11)}
-          >
-            <h2 className="text-[var(--primary)] text-base font-medium mb-4 pb-2 border-b border-[var(--primary-light)] flex-grow">
-              11. Contact Information
-            </h2>
-            <span className="text-[var(--primary)] ml-4 flex items-center justify-center h-8 w-6">
-              <i className={`fa-solid ${expandedSections[11] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
-            </span>
-          </div>
-          {expandedSections[11] && (
-            <div className="animate-fadeIn">
-              <p className="mb-4 leading-relaxed text-sm">
-                If you have any questions or comments about this Privacy Policy, please contact us at:
-              </p>
-              <div className="bg-[var(--primary-light)] p-5 rounded-lg">
-                <p className="flex items-center mb-2 text-sm">
-                  <i className="fa-solid fa-envelope text-[var(--primary)] mr-3"></i>
-                  <span>Email: privacy@bazaarwale.com</span>
-                </p>
-                <p className="flex items-center mb-2 text-sm">
-                  <i className="fa-solid fa-phone text-[var(--primary)] mr-3"></i>
-                  <span>Phone: +91-1234567890</span>
-                </p>
-                <p className="flex items-center text-sm">
-                  <i className="fa-solid fa-location-dot text-[var(--primary)] mr-3"></i>
-                  <span>Address: BazaarWale Headquarters, 123 E-Commerce Street, Digital
-                  City, India - 110001</span>
-                </p>
-              </div>
             </div>
           )}
         </section>
