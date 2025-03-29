@@ -6,7 +6,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Contact from "./pages/Contact/Contact";
 import Error from "./pages/Error/Error";
-import Cart from "./pages/Orders/Cart";
+import Cart from "./pages/Cart/Cart";
 import About_Us from "./pages/About_Us/About_Us";
 import FAQ from "./pages/FAQ/FAQ";
 import Privacy_Policy from "./pages/Privacy_Policy/Privacy_Policy";
