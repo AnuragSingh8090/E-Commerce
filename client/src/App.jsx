@@ -12,6 +12,7 @@ import FAQ from "./pages/FAQ/FAQ";
 import Privacy_Policy from "./pages/Privacy_Policy/Privacy_Policy";
 import Terms_Conditions from "./pages/Terms_Conditions/Terms_Conditions";
 import Cancellation_Return_Policy from "./pages/Cancellation_Return_Policy/Cancellation_Return_Policy";
+import MyAccount from "./pages/MyAccount/MyAccount";
 import { ToastContainer } from "react-toastify";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/privacy_policy" element={<Privacy_Policy />} />
         <Route path="/cancellation_return_policy" element={<Cancellation_Return_Policy />} />
+        <Route path="/account" element={<MyAccount />} />
         <Route path="*" element={<Error />} />
       </Routes>
       {!isAuthPage && <Footer />}
