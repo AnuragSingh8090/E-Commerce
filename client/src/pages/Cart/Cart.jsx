@@ -1,5 +1,6 @@
 import "./Cart.css";
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { sucessToast, errorToast } from "../../components/Toasters/Toasters";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 
@@ -62,7 +63,7 @@ const Cart = () => {
   const [couponCode, setCouponCode] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [couponError, setCouponError] = useState("");
-  
+
   // State for charges breakdown
   const [showChargesBreakdown, setShowChargesBreakdown] = useState(false);
 
@@ -72,66 +73,66 @@ const Cart = () => {
     { code: "FLAT100", discount: 100, type: "fixed" },
   ];
 
-  // State for checkout loading
-  const [checkoutLoading, setCheckoutLoading] = useState(false);
-  
   const orderSummaryRef = useRef(null);
   const mainContainerRef = useRef(null);
-  
+
   // Check scroll position and update order summary visibility
   useEffect(() => {
     // Function to check if the order summary is in view
     const updateCheckoutButtonPosition = () => {
       if (!orderSummaryRef.current) return;
-      
+
       // Get the order summary position
       const orderSummaryRect = orderSummaryRef.current.getBoundingClientRect();
       const scrollY = window.scrollY;
       const viewportHeight = window.innerHeight;
-      
+
       // Check if the bottom part of the order summary is visible
       const isSummaryInView = orderSummaryRect.bottom <= viewportHeight;
-      
+
       // Get the checkout button inside the order summary
-      const summaryCheckoutBtn = orderSummaryRef.current.querySelector('.checkout-btn-container');
-      
+      const summaryCheckoutBtn = orderSummaryRef.current.querySelector(
+        ".checkout-btn-container"
+      );
+
       // Apply the fixed position class to the order summary if needed
-      if (window.innerWidth < 1024) { // Only on mobile/tablet
+      if (window.innerWidth < 1024) {
+        // Only on mobile/tablet
         if (isSummaryInView) {
           // When the summary is visible, don't fix the button
-          orderSummaryRef.current.classList.remove('has-fixed-button');
+          orderSummaryRef.current.classList.remove("has-fixed-button");
           if (summaryCheckoutBtn) {
-            summaryCheckoutBtn.classList.remove('hidden');
+            summaryCheckoutBtn.classList.remove("hidden");
           }
         } else {
           // When summary not visible, fix the button to bottom
-          orderSummaryRef.current.classList.add('has-fixed-button');
+          orderSummaryRef.current.classList.add("has-fixed-button");
           if (summaryCheckoutBtn) {
-            summaryCheckoutBtn.classList.add('hidden');
+            summaryCheckoutBtn.classList.add("hidden");
           }
         }
       } else {
         // Always show the button normally on desktop
-        orderSummaryRef.current.classList.remove('has-fixed-button');
+        orderSummaryRef.current.classList.remove("has-fixed-button");
         if (summaryCheckoutBtn) {
-          summaryCheckoutBtn.classList.remove('hidden');
+          summaryCheckoutBtn.classList.remove("hidden");
         }
       }
     };
-    
+
     // Run check immediately and on scroll/resize
     updateCheckoutButtonPosition();
-    
+
     const handleScroll = () => {
       updateCheckoutButtonPosition();
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', updateCheckoutButtonPosition);
-    
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", updateCheckoutButtonPosition);
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', updateCheckoutButtonPosition);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", updateCheckoutButtonPosition);
     };
   }, []);
 
@@ -153,23 +154,28 @@ const Cart = () => {
   const calculatePackagingFee = () => {
     return 15; // Fixed packaging fee
   };
-  
+
   const calculateGST = () => {
     const subtotal = calculateSubtotal();
     return Math.round(subtotal * 0.05); // 5% GST
   };
-  
+
   const calculatePlatformFee = () => {
     return 10; // Fixed platform fee of 10 rupees
   };
-  
+
   const calculateShippingFee = () => {
     return calculateDeliveryFee(); // Reuse the existing delivery fee logic
   };
-  
+
   // Total taxes and charges (sum of all components)
   const calculateTotalCharges = () => {
-    return calculatePackagingFee() + calculateGST() + calculatePlatformFee() + calculateShippingFee();
+    return (
+      calculatePackagingFee() +
+      calculateGST() +
+      calculatePlatformFee() +
+      calculateShippingFee()
+    );
   };
 
   // Apply coupon code
@@ -223,23 +229,6 @@ const Cart = () => {
     const discount = calculateDiscount();
 
     return subtotal + charges - discount;
-  };
-
-  // Handle proceed to checkout
-  const handleCheckout = () => {
-    if (cartItems.length === 0) {
-      errorToast("Your cart is empty");
-      return;
-    }
-
-    setCheckoutLoading(true);
-
-    // Simulate API call
-    setTimeout(() => {
-      setCheckoutLoading(false);
-      sucessToast("Order placed successfully!");
-      // Would normally redirect to checkout success page
-    }, 1500);
   };
 
   // Handle removal of an item from cart
@@ -465,29 +454,37 @@ const Cart = () => {
 
                     <div>
                       <div className="flex justify-between text-sm items-center">
-                        <div 
+                        <div
                           className="flex items-center cursor-pointer"
-                          onClick={() => setShowChargesBreakdown(!showChargesBreakdown)}
+                          onClick={() =>
+                            setShowChargesBreakdown(!showChargesBreakdown)
+                          }
                           title="Click to view breakdown"
                         >
                           <span className="text-gray-600">Taxes & Charges</span>
-                          <span 
-                            className="ml-2 text-gray-500 hover:text-blue-500"
-                          >
-                            <i className={`fa-solid ${showChargesBreakdown ? 'fa-angle-up' : 'fa-angle-down'} text-xs`}></i>
+                          <span className="ml-2 text-gray-500 hover:text-blue-500">
+                            <i
+                              className={`fa-solid ${
+                                showChargesBreakdown
+                                  ? "fa-angle-up"
+                                  : "fa-angle-down"
+                              } text-xs`}
+                            ></i>
                           </span>
                         </div>
                         <span className="font-medium">
                           ₹{calculateTotalCharges().toLocaleString()}
                         </span>
                       </div>
-                      
+
                       {/* Charges breakdown dropdown */}
                       {showChargesBreakdown && (
                         <div className="mt-2 bg-gray-50 p-3 rounded-md text-xs space-y-2">
                           <div className="flex justify-between">
                             <span className="text-gray-500">Packaging Fee</span>
-                            <span>₹{calculatePackagingFee().toLocaleString()}</span>
+                            <span>
+                              ₹{calculatePackagingFee().toLocaleString()}
+                            </span>
                           </div>
                           <div className="flex justify-between">
                             <span className="text-gray-500">GST (5%)</span>
@@ -495,17 +492,23 @@ const Cart = () => {
                           </div>
                           <div className="flex justify-between">
                             <span className="text-gray-500">Platform Fee</span>
-                            <span>₹{calculatePlatformFee().toLocaleString()}</span>
+                            <span>
+                              ₹{calculatePlatformFee().toLocaleString()}
+                            </span>
                           </div>
                           <div className="flex justify-between">
                             <span className="text-gray-500">Shipping</span>
-                            <span>{calculateShippingFee() === 0 
-                              ? "Free" 
-                              : `₹${calculateShippingFee().toLocaleString()}`}</span>
+                            <span>
+                              {calculateShippingFee() === 0
+                                ? "Free"
+                                : `₹${calculateShippingFee().toLocaleString()}`}
+                            </span>
                           </div>
                           <div className="flex justify-between font-medium border-t border-gray-200 pt-1 mt-1">
                             <span>Total Charges</span>
-                            <span>₹{calculateTotalCharges().toLocaleString()}</span>
+                            <span>
+                              ₹{calculateTotalCharges().toLocaleString()}
+                            </span>
                           </div>
                         </div>
                       )}
@@ -579,47 +582,30 @@ const Cart = () => {
 
                   {/* Checkout button */}
                   <div className="checkout-btn-container">
-                    <button
-                      onClick={handleCheckout}
-                      disabled={checkoutLoading || isCartEmpty}
-                      className="w-full mt-4 bg-gradient-to-r from-blue-500 to-[var(--primary)] text-white py-2.5 rounded-lg font-medium text-sm hover:from-blue-600 hover:to-blue-500 transition duration-300 shadow-md active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center cursor-pointer"
+                    <Link
+                      to={isCartEmpty ? "#" : "/checkout"}
+                      className={`w-full mt-4 bg-gradient-to-r from-blue-500 to-[var(--primary)] text-white py-2.5 rounded-lg font-medium text-sm hover:from-blue-600 hover:to-blue-500 transition duration-300 shadow-md active:scale-[0.98] flex items-center justify-center cursor-pointer ${
+                        isCartEmpty ? "opacity-70 pointer-events-none" : ""
+                      }`}
                     >
-                      {checkoutLoading ? (
-                        <>
-                          <i className="fa-solid fa-circle-notch fa-spin mr-2"></i>
-                          Processing...
-                        </>
-                      ) : (
-                        <>
-                          <i className="fa-solid fa-lock mr-2"></i>
-                          Proceed to Checkout (₹
-                          {calculateTotal().toLocaleString()})
-                        </>
-                      )}
-                    </button>
+                      <i className="fa-solid fa-lock mr-2"></i>
+                      Proceed to Checkout (₹{calculateTotal().toLocaleString()})
+                    </Link>
                   </div>
                 </div>
               </div>
-              
+
               {/* Mobile Fixed Button - Only shown when summary is not in view */}
               <div className="fixed-checkout-btn fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 shadow-lg z-10 lg:hidden">
-                <button
-                  onClick={handleCheckout}
-                  disabled={checkoutLoading}
-                  className="w-full bg-gradient-to-r from-blue-500 to-[var(--primary)] text-white py-2.5 rounded-lg font-medium text-sm hover:from-blue-600 hover:to-blue-500 transition duration-300 shadow-md active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center cursor-pointer"
+                <Link
+                  to="/checkout"
+                  className={`w-full bg-gradient-to-r from-blue-500 to-[var(--primary)] text-white py-2.5 rounded-lg font-medium text-sm hover:from-blue-600 hover:to-blue-500 transition duration-300 shadow-md active:scale-[0.98] flex items-center justify-center cursor-pointer ${
+                    isCartEmpty ? "opacity-70 pointer-events-none" : ""
+                  }`}
                 >
-                  {checkoutLoading ? (
-                    <>
-                      <i className="fa-solid fa-circle-notch fa-spin mr-2"></i>
-                      Processing...
-                    </>
-                  ) : (
-                    <>
-                      <i className="fa-solid fa-lock mr-2"></i>
-                      Proceed to Checkout (₹{calculateTotal().toLocaleString()})
-                    </>
-                  )}
-                </button>
+                  <i className="fa-solid fa-lock mr-2"></i>
+                  Proceed to Checkout (₹{calculateTotal().toLocaleString()})
+                </Link>
               </div>
             </div>
           </div>

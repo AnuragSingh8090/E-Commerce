@@ -145,7 +145,7 @@ const Navbar = () => {
                   <span className="text-[16px]">Sumit Verma</span>
                 </div>
                 {showDrop && isLoggedIn ? (
-                  <div className="drop_container absolute top-[40px] right-[-2px] bg-white py-[6px] px-[4px] rounded-[6px] boxShadow-light">
+                  <div className="drop_container z-50 absolute top-[40px] right-[-2px] bg-white py-[6px] px-[4px] rounded-[6px] boxShadow-light">
                     <div className="flex w-max gap-[5px] flex-col items-start shrink-0 text-[15px] text-[#333232]">
                       <NavLink
                         to="/account"
@@ -213,7 +213,7 @@ const Navbar = () => {
       </div>
 
       <ul
-        className="hidden fixed top-0 left-0 h-screen w-[50%] flex-col items-start navItems px-[10px] py-[10px] text-[14px] font-[500] text-[#4f4f4f] bg-[white] shadow-2xl select-none gap-[10px] border-t-[1px] border-[var(--border-light)] md:flex md:flex-wrap md:static md:w-full md:flex-row md:h-max md:shadow-none md:bg-none"
+        className="hidden fixed top-0 left-0 z-40 h-screen w-[50%] flex-col items-start navItems px-[10px] py-[10px] text-[14px] font-[500] text-[#4f4f4f] bg-[white] shadow-2xl select-none gap-[10px] border-t-[1px] border-[var(--border-light)] md:flex md:flex-wrap md:static md:w-full md:flex-row md:h-max md:shadow-none md:bg-none"
         ref={navbarReffrence}
       >
         <div

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import ScrollToTop from '../../components/ScrollToTop/ScrollToTop'
 import "./Orders.css";
 
 const Orders = () => {
@@ -7,12 +8,9 @@ const Orders = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("all");
   const [expandedOrder, setExpandedOrder] = useState(null);
-  
-  // Scroll to top on component mount
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  
+
+
+
   // Sample orders with real product images
   useEffect(() => {
     // Simulate API fetch
@@ -106,31 +104,31 @@ const Orders = () => {
   const getStatusInfo = (status) => {
     switch (status) {
       case "Delivered":
-        return { 
+        return {
           color: "bg-green-100 text-green-800 border-green-200",
           icon: "fa-solid fa-check-circle text-green-500",
           gradient: "from-green-50 to-green-100"
         };
       case "Processing":
-        return { 
+        return {
           color: "bg-blue-100 text-blue-800 border-blue-200",
           icon: "fa-solid fa-gear text-blue-500 animate-spin-slow",
           gradient: "from-blue-50 to-blue-100"
         };
       case "Shipped":
-        return { 
+        return {
           color: "bg-purple-100 text-purple-800 border-purple-200",
           icon: "fa-solid fa-truck text-purple-500",
           gradient: "from-purple-50 to-purple-100"
         };
       case "Cancelled":
-        return { 
+        return {
           color: "bg-red-100 text-red-800 border-red-200",
           icon: "fa-solid fa-ban text-red-500",
           gradient: "from-red-50 to-red-100"
         };
       default:
-        return { 
+        return {
           color: "bg-gray-100 text-gray-800 border-gray-200",
           icon: "fa-solid fa-circle-info text-gray-500",
           gradient: "from-gray-50 to-gray-100"
@@ -140,8 +138,8 @@ const Orders = () => {
 
   // Function to handle order cancellation
   const handleCancelOrder = (orderId) => {
-    setOrders(orders.map(order => 
-      order.id === orderId 
+    setOrders(orders.map(order =>
+      order.id === orderId
         ? { ...order, status: "Cancelled" }
         : order
     ));
@@ -151,14 +149,14 @@ const Orders = () => {
   const handleCancelItem = (orderId, itemId) => {
     setOrders(orders.map(order => {
       if (order.id !== orderId) return order;
-      
-      const updatedItems = order.items.map(item => 
-        item.id === itemId ? {...item, status: "Cancelled"} : item
+
+      const updatedItems = order.items.map(item =>
+        item.id === itemId ? { ...item, status: "Cancelled" } : item
       );
-      
+
       // If all items are cancelled, mark the whole order as cancelled
       const allCancelled = updatedItems.every(item => item.status === "Cancelled");
-      
+
       return {
         ...order,
         status: allCancelled ? "Cancelled" : order.status,
@@ -190,9 +188,10 @@ const Orders = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-4 px-2 sm:px-4 lg:px-6">
+      <ScrollToTop />
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl font-bold text-gray-900 mb-6">My Orders</h1>
-        
+        <h1 className="text-2xl font-bold text-gray-900 mb-6 flex items-center justify-center gap-2"><i className="fa-solid fa-box"></i> My Orders</h1>
+
         {loading ? (
           <div className="text-center py-8">
             <div className="inline-block animate-spin text-[var(--primary)] mb-4">
@@ -207,8 +206,8 @@ const Orders = () => {
             </div>
             <h2 className="text-xl font-semibold text-gray-700 mb-2">No Orders Yet</h2>
             <p className="text-gray-500 mb-4">You haven't placed any orders with us yet.</p>
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="inline-block bg-[var(--primary)] text-white px-4 py-2 rounded-md hover:bg-[#007ab3] transition-colors cursor-pointer"
             >
               Start Shopping
@@ -229,14 +228,14 @@ const Orders = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="divide-y divide-gray-200">
                   {order.items.map(item => (
                     <div key={item.id} className="p-3 flex items-center">
                       {/* Image - Fixed and smaller */}
                       <div className="flex-shrink-0 w-16 h-16 bg-gray-100 rounded overflow-hidden mr-3">
-                        <img 
-                          src={item.image} 
+                        <img
+                          src={item.image}
                           alt={item.name}
                           className="w-full h-full object-contain"
                           onError={(e) => {
@@ -245,7 +244,7 @@ const Orders = () => {
                           }}
                         />
                       </div>
-                      
+
                       {/* Product Info - Smaller text */}
                       <div className="flex-1 min-w-0">
                         <h3 className="text-sm font-medium text-gray-900 truncate">{item.name}</h3>
@@ -258,10 +257,10 @@ const Orders = () => {
                             {item.status || order.status}
                           </span>
                           <span className="text-xs text-gray-500">
-                            {order.status === "Delivered" ? 
-                              `Delivered on ${order.deliveryDate}` : 
-                              order.estimatedDelivery ? 
-                                `Expected delivery ${order.estimatedDelivery}` : 
+                            {order.status === "Delivered" ?
+                              `Delivered on ${order.deliveryDate}` :
+                              order.estimatedDelivery ?
+                                `Expected delivery ${order.estimatedDelivery}` :
                                 ""
                             }
                           </span>
@@ -270,7 +269,7 @@ const Orders = () => {
                           {formatPrice(item.price)}
                         </div>
                       </div>
-                      
+
                       {/* Quantity - Right side */}
                       <div className="ml-3 flex-shrink-0">
                         <span className="text-xs text-gray-500">
@@ -280,15 +279,15 @@ const Orders = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="p-3 bg-gray-50 flex justify-between items-center">
                   <div>
                     <span className="text-xs text-gray-600">Total: </span>
                     <span className="text-sm font-medium text-[var(--primary)]">{formatPrice(order.total)}</span>
                   </div>
-                  
+
                   {order.status === "Processing" && (
-                    <button 
+                    <button
                       onClick={() => handleCancelOrder(order.id)}
                       className="px-3 py-1 bg-red-50 border border-red-200 rounded text-xs text-red-600 hover:bg-red-100 cursor-pointer flex items-center gap-1"
                     >
@@ -296,9 +295,9 @@ const Orders = () => {
                       <span>Cancel Order</span>
                     </button>
                   )}
-                  
+
                   {order.status === "Delivered" && (
-                    <Link 
+                    <Link
                       to={`/order/${order.id}`}
                       className="px-3 py-1 bg-[var(--primary-light)] border border-[var(--primary)] rounded text-xs text-[var(--primary)] hover:bg-[#dbf0f8] cursor-pointer flex items-center gap-1"
                     >

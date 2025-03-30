@@ -130,7 +130,7 @@ const Terms_Conditions = () => {
       {/* Desktop - Layout with TOC sidebar and content */}
       <div className="flex flex-col md:flex-row gap-8">
         {/* TOC Sidebar - Desktop */}
-        <div className="hidden md:block md:w-1/4 h-fit sticky top-24">
+        <div className="hidden md:block md:w-1/4 h-fit sticky top-30">
           <div className="bg-white rounded-lg p-4 shadow-md border border-[var(--border-light)]">
             <h3 className="text-xs font-medium text-[var(--primary)] mb-3 pb-1 border-b border-[var(--primary-light)]">
               Contents

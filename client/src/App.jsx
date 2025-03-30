@@ -15,6 +15,7 @@ import Terms_Conditions from "./pages/Terms_Conditions/Terms_Conditions";
 import Cancellation_Return_Policy from "./pages/Cancellation_Return_Policy/Cancellation_Return_Policy";
 import MyAccount from "./pages/MyAccount/MyAccount";
 import Orders from "./pages/Orders/Orders";
+import Checkout from "./pages/Checkout/Checkout";
 import { ToastContainer } from "react-toastify";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/about_us" element={<About_Us />} />
         <Route path="/terms_conditions" element={<Terms_Conditions />} />
         <Route path="/faq" element={<FAQ />} />

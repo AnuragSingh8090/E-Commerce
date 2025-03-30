@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import ScrollToTop from '../../components/ScrollToTop/ScrollToTop'
 import "./Wishlist.css";
 
 const Wishlist = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  // Scroll to top on component mount
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
   
   // Sample wishlist items with real product images
   useEffect(() => {
@@ -85,6 +83,7 @@ const Wishlist = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-4 px-2 sm:px-4 lg:px-6">
+      <ScrollToTop/>
       <div className="max-w-4xl mx-auto">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">My Wishlist</h1>
         
