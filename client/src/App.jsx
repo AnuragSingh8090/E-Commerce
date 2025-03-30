@@ -9,10 +9,12 @@ import Error from "./pages/Error/Error";
 import Cart from "./pages/Cart/Cart";
 import About_Us from "./pages/About_Us/About_Us";
 import FAQ from "./pages/FAQ/FAQ";
+import Wishlist from "./pages/Wishlist/Wishlist";
 import Privacy_Policy from "./pages/Privacy_Policy/Privacy_Policy";
 import Terms_Conditions from "./pages/Terms_Conditions/Terms_Conditions";
 import Cancellation_Return_Policy from "./pages/Cancellation_Return_Policy/Cancellation_Return_Policy";
 import MyAccount from "./pages/MyAccount/MyAccount";
+import Orders from "./pages/Orders/Orders";
 import { ToastContainer } from "react-toastify";
 
 function App() {
@@ -33,9 +35,11 @@ function App() {
         <Route path="/about_us" element={<About_Us />} />
         <Route path="/terms_conditions" element={<Terms_Conditions />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/privacy_policy" element={<Privacy_Policy />} />
         <Route path="/cancellation_return_policy" element={<Cancellation_Return_Policy />} />
         <Route path="/account" element={<MyAccount />} />
+        <Route path="/orders" element={<Orders />} />
         <Route path="*" element={<Error />} />
       </Routes>
       {!isAuthPage && <Footer />}

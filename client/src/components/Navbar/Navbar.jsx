@@ -35,8 +35,10 @@ const Navbar = () => {
     navbarReffrence.current.classList.add("navbarActive");
   };
   const closeNavbar = () => {
-    navbarReffrence.current.classList.remove("navbarActive");
-    navbarReffrence.current.classList.add("navbarInactive");
+    if (window.innerWidth < 767) {
+      navbarReffrence.current.classList.remove("navbarActive");
+      navbarReffrence.current.classList.add("navbarInactive");
+    }
   };
 
   const handleResize = () => {
@@ -170,6 +172,18 @@ const Navbar = () => {
                         </span>
                       </NavLink>
 
+                      <NavLink
+                        to="/wishlist"
+                        className="px-[10px] py-[3px] w-full rounded hover:bg-[var(--primary-light)] transition-colors duration-300 hover:shadow-sm"
+                      >
+                        <span
+                          className="active:scale-[0.95] select-none cursor-pointer"
+                          onClick={hideAccountMenu}
+                        >
+                          <i className="fa-solid fa-heart mr-[6px]"></i> My Wishlist
+                        </span>
+                      </NavLink>
+
                       <span
                         className="active:scale-[0.95] w-full select-none cursor-pointer text-[#ce0303] px-[10px] py-[3px] rounded hover:bg-[#fbe2e2] transition-colors duration-300 hover:shadow-sm"
                         onClick={() => setLoginPopup(true)}
@@ -229,6 +243,7 @@ const Navbar = () => {
         </div>
 
         <NavLink
+          onClick={closeNavbar}
           to="/"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto transition-all duration-300 hover:shadow-sm"
         >
@@ -239,6 +254,7 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          onClick={closeNavbar}
           to="/electronics"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto transition-all duration-300 hover:shadow-sm"
         >
@@ -249,6 +265,7 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          onClick={closeNavbar}
           to="/clothing"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto transition-all duration-300 hover:shadow-sm"
         >
@@ -259,6 +276,7 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          onClick={closeNavbar}
           to="/kids"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto transition-all duration-300 hover:shadow-sm"
         >
@@ -269,6 +287,7 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          onClick={closeNavbar}
           to="/beauty"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto transition-all duration-300 hover:shadow-sm"
         >
@@ -279,6 +298,7 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          onClick={closeNavbar}
           to="/home_appliences"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto transition-all duration-300 hover:shadow-sm"
         >
@@ -289,6 +309,7 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          onClick={closeNavbar}
           to="/kitchen"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto transition-all duration-300 hover:shadow-sm"
         >
@@ -299,6 +320,7 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          onClick={closeNavbar}
           to="/personal_care"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto transition-all duration-300 hover:shadow-sm"
         >
@@ -309,6 +331,7 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          onClick={closeNavbar}
           to="/about_us"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto transition-all duration-300 hover:shadow-sm"
         >
@@ -319,6 +342,7 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          onClick={closeNavbar}
           to="/contact"
           className="py-[3px] px-[10px] w-full shrink-0 hover:text-[var(--primary)] hover:rounded-lg hover:bg-[var(--primary-light)] md:w-auto transition-all duration-300 hover:shadow-sm"
         >
